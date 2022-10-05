@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import com.movingroot.android_cleanarchitecture.databinding.FragmentNoteBinding
 import com.movingroot.android_cleanarchitecture.presentation.base.BaseFragment
 
@@ -22,5 +23,13 @@ class NoteFragment : BaseFragment() {
             }
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.btnPostNote.setOnClickListener {
+            Navigation.findNavController(it).popBackStack()
+        }
     }
 }
